@@ -7,10 +7,21 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectAuth } from '../../redux/appSelector';
 import styles from './NavMenu.module.scss'
+import { setAuth } from '../../redux/appActions';
+
+function ButtonLogout({ action }) {
+  return (<Nav.Link onClick={action}>
+    Log out
+  </Nav.Link>)
+}
 
 function NavMenu() {
   const auth = useSelector(selectAuth);
-
+  const dispatch = useDispatch();
+  
+  const logOut = () => {
+    dispatch(setAuth(false))
+  }
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
@@ -27,7 +38,7 @@ function NavMenu() {
             <NavDropdown title="Link" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action4">
-                Another action
+                Another action 
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action5">
@@ -37,6 +48,7 @@ function NavMenu() {
             <Nav.Link href="#" disabled>
               Link
             </Nav.Link>
+            { auth && <ButtonLogout action={logOut}/> }
           </Nav>
           <Form className="d-flex">
             <Form.Control
