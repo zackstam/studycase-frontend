@@ -3,9 +3,9 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   carts: [],
-  auth: true,
-  user: {},
-  status: 'idle',
+  auth: localStorage.getItem('auth') ? JSON.parse(localStorage.getItem('auth')) : false,
+  user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : {},
+  loading: false
 };
 
 
@@ -16,7 +16,15 @@ export const counterSlice = createSlice({
   reducers: {
     setAuth: (state, action) => {
       state.auth  = action.payload;
+      localStorage.setItem('auth', JSON.stringify(action.payload));
     },
+    setLoading: (state, action) => {
+      state.loading = action.payload
+    },
+    setUser: (state, action) => {
+      state.user = action.payload
+      localStorage.setItem('user', JSON.stringify(action.payload));
+    }
   },
 });
 

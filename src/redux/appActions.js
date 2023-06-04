@@ -1,4 +1,4 @@
 import { counterSlice } from "./appSlice";
 
 
-export const { setAuth } = counterSlice.actions;
+export const { setAuth, setLoading, setUser } = counterSlice.actions;

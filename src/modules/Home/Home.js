@@ -7,10 +7,6 @@ import { setAuth } from '../../redux/appActions';
 const Home = () => {
     const auth = useSelector(selectAuth);
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(setAuth(true))
-    }, []);
     return (
         <div>
             <h1>Page Home</h1>

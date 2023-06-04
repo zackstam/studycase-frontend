@@ -1,7 +1,7 @@
 import Layout from './components/Layout/Layout';
 import React from 'react';
 import Home from './modules/Home/Home';
-
+import Login from '../src/modules/Login/Login'
 
 
 const routes = () => {
@@ -13,6 +13,10 @@ const routes = () => {
                 {
                     path: '/',
                     element: <Home/>,
+                },
+                {
+                    path: '/login',
+                    element: <Login/>,
                 },
             ]
         }
